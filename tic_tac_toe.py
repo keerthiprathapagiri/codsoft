@@ -1,6 +1,5 @@
 import math
 
-# Initialize board
 board = [" " for _ in range(9)]
 
 HUMAN = "X"
@@ -32,17 +31,13 @@ def check_winner(player):
     return False
 
 
-# Check draw
 def is_draw():
     return " " not in board
 
-
-# Get available moves
 def get_empty_cells():
     return [i for i in range(9) if board[i] == " "]
 
 
-# Minimax with Alpha-Beta Pruning
 def minimax(depth, is_maximizing, alpha, beta):
 
     if check_winner(AI):
@@ -108,13 +103,13 @@ def ai_move():
 def human_move():
     while True:
         try:
-            move = int(input("Enter your move (1-9): ")) - 1
+            move = int(input("Enter your move from(1-9): ")) - 1
 
             if move in get_empty_cells():
                 board[move] = HUMAN
                 break
             else:
-                print("Invalid move. Try again.")
+                print("Invalid move. Try again...")
 
         except ValueError:
             print("Please enter a number between 1 and 9.")
@@ -123,7 +118,7 @@ def human_move():
 # Main Game Loop
 def play_game():
 
-    print("TIC TAC TOE - HUMAN vs AI")
+    print("TIC TAC TOE | HUMAN vs AI")
     print("You are X | AI is O")
     print("Positions:")
     print("1 | 2 | 3")
@@ -145,7 +140,7 @@ def play_game():
             break
 
         if is_draw():
-            print("🤝 It's a Draw!")
+            print(" It's a Draw! how about a rematch?")
             break
 
         # AI turn
@@ -154,14 +149,13 @@ def play_game():
         print_board()
 
         if check_winner(AI):
-            print("🤖 AI Wins!")
+            print(" AI Wins! wanna play again?")
             break
 
         if is_draw():
-            print("🤝 It's a Draw!")
+            print(" It's a Draw! how about a rematch?")
             break
 
 
-# Start Game
 if __name__ == "__main__":
     play_game()
