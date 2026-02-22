@@ -1,5 +1,6 @@
 import math
 
+
 board = [" " for _ in range(9)]
 
 HUMAN = "X"
